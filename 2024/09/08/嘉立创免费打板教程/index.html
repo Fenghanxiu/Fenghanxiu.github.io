@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en"><head>
+<title>嘉立创免费打板教程 - Hexo</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="一、前言在此之前先介绍一下嘉立创这家公司，嘉立创是一家成立于2006年的高新技术企业，它专注于多个领域，包括PCB打样、激光钢网、SMT贴片、3D打印、CNC金属加工、钣金加工等。 立创平台会给大家很多福利：每月两次的PCB打样（5片）机会，以及每月两次的一元CNC服务，3D打印优惠卷，电子元件优惠卷等。 嘉立创旗下的EDA设计软件（电路板绘制）、下单助手，立创开源广场和立创商城等，之后都会给大家">
+<meta property="og:type" content="article">
+<meta property="og:title" content="嘉立创免费打板教程">
+<meta property="og:url" content="http://example.com/2024/09/08/%E5%98%89%E7%AB%8B%E5%88%9B%E5%85%8D%E8%B4%B9%E6%89%93%E6%9D%BF%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、前言在此之前先介绍一下嘉立创这家公司，嘉立创是一家成立于2006年的高新技术企业，它专注于多个领域，包括PCB打样、激光钢网、SMT贴片、3D打印、CNC金属加工、钣金加工等。 立创平台会给大家很多福利：每月两次的PCB打样（5片）机会，以及每月两次的一元CNC服务，3D打印优惠卷，电子元件优惠卷等。 嘉立创旗下的EDA设计软件（电路板绘制）、下单助手，立创开源广场和立创商城等，之后都会给大家">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2024/09/08/bLRDgnQ7S9THyEv.png">
+<meta property="og:image" content="https://s2.loli.net/2024/09/08/zOLBIGK7j2kyo4g.png">
+<meta property="og:image" content="https://s2.loli.net/2024/09/08/45QWmOkrvPDtz9a.png">
+<meta property="og:image" content="https://s2.loli.net/2024/09/08/Wam3HLlsefD4vYO.png">
+<meta property="og:image" content="https://s2.loli.net/2024/09/08/lufMtz1ogRwIEK8.png">
+<meta property="og:image" content="https://s2.loli.net/2024/09/08/e8ToZKGEgqrjYW5.png">
+<meta property="og:image" content="https://s2.loli.net/2024/09/08/4puFYWiN9Ql5Mv7.png">
+<meta property="og:image" content="file:///D:/QQ%E8%B5%84%E6%96%99/%E6%95%B0%E6%8D%AE/1719210758/Image/Group2/RZ/S2/RZS27@M3U%60$J_@N%605U652V5_tmb.JPG">
+<meta property="og:image" content="file:///D:/QQ%E8%B5%84%E6%96%99/%E6%95%B0%E6%8D%AE/1719210758/Image/Group2/LI/MD/LIMDC%60CPYFCT87C@0SFN%7D@4_tmb.JPG">
+<meta property="og:image" content="file:///D:/QQ%E8%B5%84%E6%96%99/%E6%95%B0%E6%8D%AE/1719210758/Image/Group2/OW%7B%7D/OW%7B%7D4TQ]Y[VNHCUXC538H@W_tmb.JPG">
+<meta property="og:image" content="e:\Hexo\%E5%8D%9A%E5%AE%A2%E8%B5%84%E6%96%99\pcb\%E5%8E%8B%E7%BC%A9%E4%B9%8B%E5%90%8E\QQ%E5%9B%BE%E7%89%8720240908190755.png">
+<meta property="og:image" content="e:\Hexo\%E5%8D%9A%E5%AE%A2%E8%B5%84%E6%96%99\pcb\%E5%8E%8B%E7%BC%A9%E4%B9%8B%E5%90%8E\QQ%E5%9B%BE%E7%89%8720240908190758.png">
+<meta property="og:image" content="e:\Hexo\%E5%8D%9A%E5%AE%A2%E8%B5%84%E6%96%99\pcb\%E5%8E%8B%E7%BC%A9%E4%B9%8B%E5%90%8E\QQ%E5%9B%BE%E7%89%8720240908190801.png">
+<meta property="og:image" content="file:///D:/QQ%E8%B5%84%E6%96%99/%E6%95%B0%E6%8D%AE/1719210758/Image/Group2/35/P[/35P[D%7B1P36HM%DL2RGE4MR6_tmb.JPG">
+<meta property="og:image" content="e:\Hexo\%E5%8D%9A%E5%AE%A2%E8%B5%84%E6%96%99\pcb\%E5%8E%8B%E7%BC%A9%E4%B9%8B%E5%90%8E\QQ%E5%9B%BE%E7%89%8720240908190804.png">
+<meta property="og:image" content="e:\Hexo\%E5%8D%9A%E5%AE%A2%E8%B5%84%E6%96%99\pcb\%E5%8E%8B%E7%BC%A9%E4%B9%8B%E5%90%8E\QQ%E5%9B%BE%E7%89%8720240908190807.png">
+<meta property="og:image" content="e:\Hexo\%E5%8D%9A%E5%AE%A2%E8%B5%84%E6%96%99\pcb\%E5%8E%8B%E7%BC%A9%E4%B9%8B%E5%90%8E\QQ%E5%9B%BE%E7%89%8720240908190815.png">
+<meta property="og:image" content="file:///D:/QQ%E8%B5%84%E6%96%99/%E6%95%B0%E6%8D%AE/1719210758/Image/Group2_N/QG_NQGQ0XETO1G~]C5%7BB8IRVX_tmb.JPG">
+<meta property="og:image" content="file:///D:/QQ%E8%B5%84%E6%96%99/%E6%95%B0%E6%8D%AE/1719210758/Image/Group2/F]/AI/F]AIUNB10GTPU@6Y16BK94H_tmb.JPG">
+<meta property="article:published_time" content="2024-09-08T10:00:48.000Z">
+<meta property="article:modified_time" content="2024-09-09T01:07:29.755Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/09/08/bLRDgnQ7S9THyEv.png">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1725844151854">
+
+<link rel="stylesheet" href="/css/style.css?v=1725844151854">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1725844151854">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1725844151854"></script>
+
+ 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+
+  gtag("config", "G-4D4ZJ9G024");
+</script>
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://pic.imgdb.cn/item/66dc805ad9c307b7e993fd82.png)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="John Doe"><img src="https://pic.imgdb.cn/item/66dc7539d9c307b7e97d090d.jpg" alt="John Doe"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="John Doe">
+            <img src="https://pic.imgdb.cn/item/66dc7539d9c307b7e97d090d.jpg" alt="John Doe" alt="John Doe">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>3</div>
+        <div><span>Tags</span>0</div>
+        <div><span>Categories</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://nexmoe.com/donate.html" title="给我赞助">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                给我赞助
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://i.nexmoe.com/" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://jq.qq.com/?_wv=1027&k=5CfKHun"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ群'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/20238211"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/nexmoe/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/nexmoe"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://twitter.com/nexmoe"
+			target="_blank"
+			mdui-tooltip="{content: 'Twitter'}"
+			style="
+				color: rgb(59, 151, 239);
+				background-color: rgba(59, 151, 239, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-twitter"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://nexmoe.com/atom.xml"
+			target="_blank"
+			mdui-tooltip="{content: 'RSS'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+
+    
+        
+        
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Recent Posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/09/08/%E5%98%89%E7%AB%8B%E5%88%9B%E5%85%8D%E8%B4%B9%E6%89%93%E6%9D%BF%E6%95%99%E7%A8%8B/">嘉立创免费打板教程</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/07/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/06/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+            <li>
+                <a href="https://nexmoe.com/" target="_blank" >
+                    <img src="https://pic.imgdb.cn/item/66dc81fcd9c307b7e996366f.jpg" alt="封寒修"></img>
+                    <p>封寒修</p>
+                </a>
+            </li>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+    
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 John Doe
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
+<br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
+<img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a>
+
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://pic.imgdb.cn/item/66dc805ad9c307b7e993fd82.png" alt="嘉立创免费打板教程" loading="lazy">
+            <h1>嘉立创免费打板教程</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2024年09月08日</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><p>在此之前先介绍一下嘉立创这家公司，嘉立创是一家成立于2006年的高新技术企业，它专注于多个领域，包括PCB打样、激光钢网、SMT贴片、3D打印、CNC金属加工、钣金加工等。</p>
+<p>立创平台会给大家很多福利：每月两次的PCB打样（5片）机会，以及每月两次的一元CNC服务，3D打印优惠卷，电子元件优惠卷等。</p>
+<p>嘉立创旗下的EDA设计软件（电路板绘制）、下单助手，立创开源广场和立创商城等，之后都会给大家提供很多帮助，大家可以详细了解一下。</p>
+<p>今天教给大家的是白嫖嘉立创的PCB打样</p>
+<h1 id="二、基础知识介绍"><a href="#二、基础知识介绍" class="headerlink" title="二、基础知识介绍"></a>二、基础知识介绍</h1><h1 id="首先给大家介绍一下PCB是什么"><a href="#首先给大家介绍一下PCB是什么" class="headerlink" title="首先给大家介绍一下PCB是什么"></a>首先给大家介绍一下PCB是什么</h1><p>PCB（ Printed Circuit Board），中文名称为印制电路板，又称印刷线路板，是重要的电子部件，是电子元器件的支撑体，是电子元器件电气连接的载体。由于它是采用电子印刷术制作的，故被称为“印刷”电路板。其主要功能是使各种电子元器组件通过电路进行连接，起到导通和传输的作用，是电子产品的关键电子互连件。几乎每种电子设备都离不开印制电路板，因为其提供各种电子元器件固定装配的机械支撑、实现其间的布线和电气连接或电绝缘、提供所要求的电气特性，其制造品质直接影响电子产品的稳定性和使用寿命，并且影响系统产品整体竞争力，有“电子产品之母”之称。</p>
+<p>你见到的几乎所有（大部分）需要用到电的物品内部都有着电路板的存在</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/09/08/bLRDgnQ7S9THyEv.png" alt="图片" data-caption="图片" loading="lazy"></p>
+<!--各种各样的PCB电路板-->
+<p>电路板有黑白丝印和彩色丝印之分，丝印就是在电路板表面可以看到的标志，图片或文字。</p>
+<p><strong>嘉立创每月两次的免费PCB打样只支持黑白丝印，而彩色丝印需要额外50元活或者这张优惠卷</strong></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/09/08/zOLBIGK7j2kyo4g.png" alt="图片" data-caption="图片" loading="lazy"></p>
+<p><strong>作品展示</strong></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/09/08/45QWmOkrvPDtz9a.png" alt="图片" data-caption="图片" loading="lazy"><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/09/08/Wam3HLlsefD4vYO.png" alt="图片" data-caption="图片" loading="lazy"><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/09/08/lufMtz1ogRwIEK8.png" alt="图片" data-caption="图片" loading="lazy"><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/09/08/e8ToZKGEgqrjYW5.png" alt="图片" data-caption="图片" loading="lazy"></p>
+<p>彩色丝印卷可以在一些活动中获得，关注嘉立创eda公众号时刻关注。</p>
+<h1 id="三、正式教程"><a href="#三、正式教程" class="headerlink" title="三、正式教程"></a>三、正式教程</h1><p>那么现在正式开始教大家白嫖</p>
+<h2 id="1-进入-下载客户端-选择适配自己电脑系统的文件下载（嘉立创EDA专业版）"><a href="#1-进入-下载客户端-选择适配自己电脑系统的文件下载（嘉立创EDA专业版）" class="headerlink" title="1.进入 -下载客户端-选择适配自己电脑系统的文件下载（嘉立创EDA专业版）"></a>1.进入 -下载客户端-选择适配自己电脑系统的文件下载（嘉立创EDA专业版）</h2><p><a target="_blank" rel="noopener" href="https://pro.lceda.cn/">https://pro.lceda.cn/</a><br>这个是嘉立创EDA的下载网站，嘉立创EDA是电路板的绘制工具<!--注意：都要用电脑操作--></p>
+<h2 id="2-下载下单助手"><a href="#2-下载下单助手" class="headerlink" title="2.下载下单助手"></a>2.下载下单助手</h2><p><a target="_blank" rel="noopener" href="https://www.jlc.com/portal/appDownloadsWithConfig.html">https://www.jlc.com/portal/appDownloadsWithConfig.html</a></p>
+<p><em><strong><a target="_blank" rel="noopener" href="https://oshwhub.com/%EF%BC%88%E8%BF%99%E4%B8%AA%E6%98%AF%E7%AB%8B%E5%88%9B%E5%BC%80%E6%BA%90%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%BD%91%E5%9D%80%EF%BC%8C%E5%9C%A8%E8%BF%99%E4%B8%AA%E4%B8%8A%E9%9D%A2%E4%BD%A0%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E5%BE%88%E5%A4%9A%E5%A4%A7%E4%BD%AC%E5%BC%80%E6%BA%90%E7%9A%84%E4%BD%9C%E5%93%81%EF%BC%88%E7%94%B5%E8%84%91%EF%BC%8C%E6%89%8B%E6%9C%BA%EF%BC%8C%E6%8A%95%E5%BD%B1%E4%BB%AA%EF%BC%8C%E7%89%99%E5%88%B7%EF%BC%8C%E6%89%8B%E8%A1%A8%EF%BC%8C%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%AD%89%EF%BC%89">https://oshwhub.com/（这个是立创开源平台的网址，在这个上面你可以看到很多大佬开源的作品（电脑，手机，投影仪，牙刷，手表，机器人等）</a></strong></em></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s2.loli.net/2024/09/08/4puFYWiN9Ql5Mv7.png" alt="img" data-caption="img" loading="lazy"><br>这里输入梵高（要登录)</p>
+<h2 id="3-搜索后，页面跳转，点击第一个"><a href="#3-搜索后，页面跳转，点击第一个" class="headerlink" title="3.搜索后，页面跳转，点击第一个"></a>3.搜索后，页面跳转，点击第一个</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="file:///D:\QQ资料\数据\1719210758\Image\Group2\RZ\S2\RZS27@M3U`$J_@N`5U652V5_tmb.JPG" alt="img" data-caption="img" loading="lazy"></p>
+<h2 id="4-点击编辑器打开"><a href="#4-点击编辑器打开" class="headerlink" title="4.点击编辑器打开"></a>4.点击编辑器打开</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="file:///D:\QQ资料\数据\1719210758\Image\Group2\LI\MD\LIMDC`CPYFCT87C@0SFN}@4_tmb.JPG" alt="img" data-caption="img" loading="lazy"></p>
+<h2 id="5-点击PCB"><a href="#5-点击PCB" class="headerlink" title="5.点击PCB"></a>5.点击PCB</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="file:///D:\QQ资料\数据\1719210758\Image\Group2\OW{}\OW{}4TQ]Y[VNHCUXC538H@W_tmb.JPG" alt="img" data-caption="img" loading="lazy"><br>(可能有点慢，需要等待)</p>
+<h2 id="6-点击导出PCB制板文件"><a href="#6-点击导出PCB制板文件" class="headerlink" title="6.点击导出PCB制板文件"></a>6.点击导出PCB制板文件</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="E:\Hexo\博客资料\pcb\压缩之后\QQ图片20240908190755.png" alt="QQ图片20240908190755" data-caption="QQ图片20240908190755" loading="lazy"></p>
+<h2 id="7-导出Gerber"><a href="#7-导出Gerber" class="headerlink" title="7.导出Gerber"></a>7.导出Gerber</h2><p><em>文件会自动下载到你的Downloads中，你可以在此电脑–Downloads中找到</em></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="E:\Hexo\博客资料\pcb\压缩之后\QQ图片20240908190758.png" alt="QQ图片20240908190758" data-caption="QQ图片20240908190758" loading="lazy"></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="E:\Hexo\博客资料\pcb\压缩之后\QQ图片20240908190801.png" alt="QQ图片20240908190801" data-caption="QQ图片20240908190801" loading="lazy"></p>
+<h2 id="8点开嘉立创下单助手（刚刚下的软件"><a href="#8点开嘉立创下单助手（刚刚下的软件" class="headerlink" title="8点开嘉立创下单助手（刚刚下的软件)"></a>8点开嘉立创下单助手（刚刚下的软件)</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="file:///D:\QQ资料\数据\1719210758\Image\Group2\35\P[\35P[D{1P36HM%DL2RGE4MR6_tmb.JPG" alt="img" data-caption="img" loading="lazy"></p>
+<h2 id="9-领取一张：1-4层喷锡EDA专用券"><a href="#9-领取一张：1-4层喷锡EDA专用券" class="headerlink" title="9.领取一张：1-4层喷锡EDA专用券"></a>9.领取一张：1-4层喷锡EDA专用券</h2><p>点击用户中心–优惠卷中心–免费卷领取</p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="E:\Hexo\博客资料\pcb\压缩之后\QQ图片20240908190804.png" alt="QQ图片20240908190804" data-caption="QQ图片20240908190804" loading="lazy"></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="E:\Hexo\博客资料\pcb\压缩之后\QQ图片20240908190807.png" alt="QQ图片20240908190807" data-caption="QQ图片20240908190807" loading="lazy"></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="10-选择优惠卷"><a href="#10-选择优惠卷" class="headerlink" title="10.选择优惠卷"></a>10.选择优惠卷</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="E:\Hexo\博客资料\pcb\压缩之后\QQ图片20240908190815.png" alt="QQ图片20240908190815" data-caption="QQ图片20240908190815" loading="lazy"></p>
+<h2 id="11-配置"><a href="#11-配置" class="headerlink" title="11.配置"></a>11.配置</h2><ol>
+<li>板子数量选5</li>
+<li>填写工艺</li>
+<li>发票处不需要写，地址和联系方式填写自己的（成都理工大学）<br>下单–支付</li>
+<li>支付金额是0元</li>
+</ol>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="file:///D:\QQ资料\数据\1719210758\Image\Group2_N\QG_NQGQ0XETO1G~]C5{B8IRVX_tmb.JPG" alt="img" data-caption="img" loading="lazy"></p>
+<h2 id="12-可以查看订单信息"><a href="#12-可以查看订单信息" class="headerlink" title="12.可以查看订单信息"></a>12.可以查看订单信息</h2><p><img onerror="imgOnError(this);" data-fancybox="gallery" src="file:///D:\QQ资料\数据\1719210758\Image\Group2\F]\AI\F]AIUNB10GTPU@6Y16BK94H_tmb.JPG" alt="img" data-caption="img" loading="lazy"></p>
+<h1 id="四、结语"><a href="#四、结语" class="headerlink" title="四、结语"></a>四、结语</h1><p>期间需要选择路径，解压缩，注册账号等操作，如有不会，可以在群里询问请教</p>
+
+    <p><img src="https://pic.imgdb.cn/item/66dc7539d9c307b7e97d090d.jpg" loading="lazy"></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>John Doe<br>
+        <strong>Link：</strong><a href="http://example.com/2024/09/08/%E5%98%89%E7%AB%8B%E5%88%9B%E5%85%8D%E8%B4%B9%E6%89%93%E6%9D%BF%E6%95%99%E7%A8%8B/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;09&#x2F;08&#x2F;%E5%98%89%E7%AB%8B%E5%88%9B%E5%85%8D%E8%B4%B9%E6%89%93%E6%9D%BF%E6%95%99%E7%A8%8B&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;09&#x2F;08&#x2F;%E5%98%89%E7%AB%8B%E5%88%9B%E5%85%8D%E8%B4%B9%E6%89%93%E6%9D%BF%E6%95%99%E7%A8%8B&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本博客采用由开源协会搭建
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1725844151848"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置 slotComment
+
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">二、基础知识介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E7%BB%99%E5%A4%A7%E5%AE%B6%E4%BB%8B%E7%BB%8D%E4%B8%80%E4%B8%8BPCB%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">3.</span> <span class="toc-text">首先给大家介绍一下PCB是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%AD%A3%E5%BC%8F%E6%95%99%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">三、正式教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%BF%9B%E5%85%A5-%E4%B8%8B%E8%BD%BD%E5%AE%A2%E6%88%B7%E7%AB%AF-%E9%80%89%E6%8B%A9%E9%80%82%E9%85%8D%E8%87%AA%E5%B7%B1%E7%94%B5%E8%84%91%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%EF%BC%88%E5%98%89%E7%AB%8B%E5%88%9BEDA%E4%B8%93%E4%B8%9A%E7%89%88%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">1.进入 -下载客户端-选择适配自己电脑系统的文件下载（嘉立创EDA专业版）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%8B%E8%BD%BD%E4%B8%8B%E5%8D%95%E5%8A%A9%E6%89%8B"><span class="toc-number">4.2.</span> <span class="toc-text">2.下载下单助手</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%90%9C%E7%B4%A2%E5%90%8E%EF%BC%8C%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC%EF%BC%8C%E7%82%B9%E5%87%BB%E7%AC%AC%E4%B8%80%E4%B8%AA"><span class="toc-number">4.3.</span> <span class="toc-text">3.搜索后，页面跳转，点击第一个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%82%B9%E5%87%BB%E7%BC%96%E8%BE%91%E5%99%A8%E6%89%93%E5%BC%80"><span class="toc-number">4.4.</span> <span class="toc-text">4.点击编辑器打开</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%82%B9%E5%87%BBPCB"><span class="toc-number">4.5.</span> <span class="toc-text">5.点击PCB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%82%B9%E5%87%BB%E5%AF%BC%E5%87%BAPCB%E5%88%B6%E6%9D%BF%E6%96%87%E4%BB%B6"><span class="toc-number">4.6.</span> <span class="toc-text">6.点击导出PCB制板文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%AF%BC%E5%87%BAGerber"><span class="toc-number">4.7.</span> <span class="toc-text">7.导出Gerber</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E7%82%B9%E5%BC%80%E5%98%89%E7%AB%8B%E5%88%9B%E4%B8%8B%E5%8D%95%E5%8A%A9%E6%89%8B%EF%BC%88%E5%88%9A%E5%88%9A%E4%B8%8B%E7%9A%84%E8%BD%AF%E4%BB%B6"><span class="toc-number">4.8.</span> <span class="toc-text">8点开嘉立创下单助手（刚刚下的软件)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E9%A2%86%E5%8F%96%E4%B8%80%E5%BC%A0%EF%BC%9A1-4%E5%B1%82%E5%96%B7%E9%94%A1EDA%E4%B8%93%E7%94%A8%E5%88%B8"><span class="toc-number">4.9.</span> <span class="toc-text">9.领取一张：1-4层喷锡EDA专用券</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.10.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E9%80%89%E6%8B%A9%E4%BC%98%E6%83%A0%E5%8D%B7"><span class="toc-number">4.11.</span> <span class="toc-text">10.选择优惠卷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E9%85%8D%E7%BD%AE"><span class="toc-number">4.12.</span> <span class="toc-text">11.配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E5%8F%AF%E4%BB%A5%E6%9F%A5%E7%9C%8B%E8%AE%A2%E5%8D%95%E4%BF%A1%E6%81%AF"><span class="toc-number">4.13.</span> <span class="toc-text">12.可以查看订单信息</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%BB%93%E8%AF%AD"><span class="toc-number">5.</span> <span class="toc-text">四、结语</span></a></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="Search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>
