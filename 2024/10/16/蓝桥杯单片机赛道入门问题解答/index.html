@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en"><head>
+<title>蓝桥杯单片机赛道入门问题解答 - OSA</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="蓝桥杯单片机赛道入门问题解答1. 蓝桥杯是什么蓝桥杯是国家级的甲级比赛，赛制为单人赛，涵盖多个与编程相关的赛道。软件组主要侧重算法，硬件组则关注硬件编程。单片机赛道为15，嵌入式赛道为32，本质上二者都是基于单片机开发。此外，还有EDA制图。开源协会负责硬件组的单片机赛道（即15单片机开发）。 2. 蓝桥杯单片机赛道的比赛形式比赛中，官方提供单片机开发板，限时5小时，分为主观题和客观题：  客观题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝桥杯单片机赛道入门问题解答">
+<meta property="og:url" content="http://example.com/2024/10/16/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E8%B5%9B%E9%81%93%E5%85%A5%E9%97%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94/index.html">
+<meta property="og:site_name" content="OSA">
+<meta property="og:description" content="蓝桥杯单片机赛道入门问题解答1. 蓝桥杯是什么蓝桥杯是国家级的甲级比赛，赛制为单人赛，涵盖多个与编程相关的赛道。软件组主要侧重算法，硬件组则关注硬件编程。单片机赛道为15，嵌入式赛道为32，本质上二者都是基于单片机开发。此外，还有EDA制图。开源协会负责硬件组的单片机赛道（即15单片机开发）。 2. 蓝桥杯单片机赛道的比赛形式比赛中，官方提供单片机开发板，限时5小时，分为主观题和客观题：  客观题">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic.imgdb.cn/item/670fc595d29ded1a8c520650.png">
+<meta property="article:published_time" content="2024-10-16T13:35:32.000Z">
+<meta property="article:modified_time" content="2024-10-16T14:10:29.516Z">
+<meta property="article:author" content="Feng HanXiu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/670fc595d29ded1a8c520650.png">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1729087838173">
+
+<link rel="stylesheet" href="/css/style.css?v=1729087838173">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1729087838173">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1729087838173"></script>
+
+ 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+
+  gtag("config", "G-4D4ZJ9G024");
+</script>
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://pic.imgdb.cn/item/66dc805ad9c307b7e993fd82.png)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Feng HanXiu"><img src="https://pic.imgdb.cn/item/66dc7539d9c307b7e97d090d.jpg" alt="Feng HanXiu"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Feng HanXiu">
+            <img src="https://pic.imgdb.cn/item/66dc7539d9c307b7e97d090d.jpg" alt="Feng HanXiu" alt="Feng HanXiu">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>4</div>
+        <div><span>Tags</span>0</div>
+        <div><span>Categories</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://nexmoe.com/donate.html" title="给我赞助">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                给我赞助
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="http://wpa.qq.com/msgrd?v=3&uin=1719210758&site=qq&menu=yes" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://jq.qq.com/?_wv=1027&k=5CfKHun"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ群'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/20238211"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/nexmoe/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/nexmoe"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://twitter.com/nexmoe"
+			target="_blank"
+			mdui-tooltip="{content: 'Twitter'}"
+			style="
+				color: rgb(59, 151, 239);
+				background-color: rgba(59, 151, 239, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-twitter"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://nexmoe.com/atom.xml"
+			target="_blank"
+			mdui-tooltip="{content: 'RSS'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+
+    
+        
+        
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Recent Posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/10/16/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E8%B5%9B%E9%81%93%E5%85%A5%E9%97%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94/">蓝桥杯单片机赛道入门问题解答</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/11/VSCode%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">VSCode安装与配置指南</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/08/%E5%98%89%E7%AB%8B%E5%88%9B%E5%85%8D%E8%B4%B9%E6%89%93%E6%9D%BF%E6%95%99%E7%A8%8B/">嘉立创免费打板教程</a>
+          </li>
+        
+          <li>
+            <a href="/2024/09/06/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+            <li>
+                <a href="https://nexmoe.com/" target="_blank" >
+                    <img src="https://pic.imgdb.cn/item/66dc81fcd9c307b7e996366f.jpg" alt="封寒修"></img>
+                    <p>封寒修</p>
+                </a>
+            </li>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+    
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Feng HanXiu
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
+<br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
+<img src="https://pic.imgdb.cn/item/66de4c62d9c307b7e939a02c.png" width="150px"></a>
+
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://pic.imgdb.cn/item/66dc805ad9c307b7e993fd82.png" alt="蓝桥杯单片机赛道入门问题解答" loading="lazy">
+            <h1>蓝桥杯单片机赛道入门问题解答</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2024年10月16日</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <h1 id="蓝桥杯单片机赛道入门问题解答"><a href="#蓝桥杯单片机赛道入门问题解答" class="headerlink" title="蓝桥杯单片机赛道入门问题解答"></a>蓝桥杯单片机赛道入门问题解答</h1><h2 id="1-蓝桥杯是什么"><a href="#1-蓝桥杯是什么" class="headerlink" title="1. 蓝桥杯是什么"></a>1. 蓝桥杯是什么</h2><p>蓝桥杯是国家级的甲级比赛，赛制为单人赛，涵盖多个与编程相关的赛道。软件组主要侧重算法，硬件组则关注硬件编程。单片机赛道为15，嵌入式赛道为32，本质上二者都是基于单片机开发。此外，还有EDA制图。开源协会负责硬件组的单片机赛道（即15单片机开发）。</p>
+<h2 id="2-蓝桥杯单片机赛道的比赛形式"><a href="#2-蓝桥杯单片机赛道的比赛形式" class="headerlink" title="2. 蓝桥杯单片机赛道的比赛形式"></a>2. 蓝桥杯单片机赛道的比赛形式</h2><p>比赛中，官方提供单片机开发板，限时5小时，分为主观题和客观题：</p>
+<ul>
+<li><strong>客观题</strong>：不定向选择题，满分为15分。</li>
+<li><strong>主观题</strong>：根据题目要求编写程序，让单片机实现指定功能。代码需上传至指定平台进行评测，满分85分。</li>
+</ul>
+<h2 id="3-如何准备"><a href="#3-如何准备" class="headerlink" title="3. 如何准备"></a>3. 如何准备</h2><ul>
+<li><strong>客观题</strong>：涉及电路分析、模电、数电及单片机的理论知识。</li>
+<li><strong>主观题</strong>：主要是编写单片机程序，这是我们重点练习的内容。</li>
+</ul>
+<h2 id="4-什么是单片机"><a href="#4-什么是单片机" class="headerlink" title="4. 什么是单片机"></a>4. 什么是单片机</h2><p>单片机（MicroController Unit, MCU）是一种将CPU、RAM、ROM、定时&#x2F;计数器及输入&#x2F;输出接口（I&#x2F;O接口）等计算机主要功能集成在一块芯片上的微型计算机。简而言之，单片机是开发板上的核心芯片，它可以通过烧录代码上电自动运行预定程序。</p>
+<p>单片机技术在现代工业自动化、电子电气、通信及物联网等领域具有广泛应用。随着智能化和自动化程度的提高，单片机已经渗透到我们生活的每一个角落，从家电到公共设施，单片机无处不在。此外，单片机技术也是学习更高级技术如ARM嵌入式系统和FPGA设计的基础。</p>
+<h2 id="5-15单片机和51单片机的区别"><a href="#5-15单片机和51单片机的区别" class="headerlink" title="5. 15单片机和51单片机的区别"></a>5. 15单片机和51单片机的区别</h2><p>51单片机是较早的技术，而15单片机可以看作是51的增强版，二者的基本结构相似，开发方式也基本一致。因此，很多51单片机的教程可以用于15单片机，尽管头文件有所区别。</p>
+<h2 id="6-蓝桥杯单片机主观题考察内容"><a href="#6-蓝桥杯单片机主观题考察内容" class="headerlink" title="6. 蓝桥杯单片机主观题考察内容"></a>6. 蓝桥杯单片机主观题考察内容</h2><p>简要来说，主观题考察以下几点：</p>
+<ol>
+<li><strong>外设的独立运行</strong>：确保外设模块能够独立运行。</li>
+<li><strong>多外设综合运行</strong>：多外设同时运行且不产生冲突。</li>
+<li><strong>优化性能</strong>：提升代码的运行效率与可靠性。</li>
+</ol>
+<h3 id="学习路线建议"><a href="#学习路线建议" class="headerlink" title="学习路线建议"></a>学习路线建议</h3><p>一切的基础，&#x3D;&#x3D;先搞到一块板子&#x3D;&#x3D;，具体购买方式可以查看群精华</p>
+<ol>
+<li><p><strong>前期</strong>：打好C语言基础，逐个学习外设模块的原理并编写代码实现功能。同时培养看电路图和查阅手册的能力。</p>
+</li>
+<li><p><strong>中期</strong>：通过练习往年真题，学习如何整合多个模块并确保它们不冲突。</p>
+</li>
+<li><p><strong>后期</strong>：优化代码逻辑，刷题，准备个人的代码模板，并复习客观题内容。</p>
+<p><strong>主要考点：</strong></p>
+<p><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://pic.imgdb.cn/item/670fc595d29ded1a8c520650.png" alt="图片" data-caption="图片" loading="lazy"></p>
+</li>
+</ol>
+<h2 id="7-学习资源"><a href="#7-学习资源" class="headerlink" title="7. 学习资源"></a>7. 学习资源</h2><h3 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h3><ul>
+<li>跟随开源协会的培训内容，包括PPT、历年教程、B站录播视频和博客。不过，这些只能算是入门，还需要个人多加练习。</li>
+</ul>
+<h4 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h4><ul>
+<li><p><strong>51单片机</strong>：</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://space.bilibili.com/383400717">江协科技</a>（非常详细的51单片机教程）</p>
+<p>  <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Mb411e7re/?spm_id_from=333.337.search-card.all.click&vd_source=d07f9e255d8b920bb253675e7eabe191">51单片机入门教程-2020版 程序全程纯手打 从零开始入门_哔哩哔哩_bilibili</a></p>
+</li>
+<li><p><strong>15单片机</strong>： </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/397050828">小蜜蜂老师的干货铺</a>（速成类教程，讲解通俗，适合入门，但是后续继续提升需要学习其他的知识）</li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Bt41187hw/?spm_id_from=333.999.0.0&vd_source=d07f9e255d8b920bb253675e7eabe191">【小蜜蜂笔记】蓝桥杯大赛-单片机设计与开发基础技能与进阶强化教程_哔哩哔哩_bilibili</a></li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/43695494">小叶好想爱学习</a>（开源协会老学长的教程）</li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1N7411g7Mj/?spm_id_from=333.337.search-card.all.click">https://www.bilibili.com/video/BV1N7411g7Mj/?spm_id_from=333.337.search-card.all.click</a></li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/1041194501">Alice_西风</a>（同样推荐的蓝桥杯系统性教学视频，相比之前两个更加细致，并有许多真题讲解）</li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/1041194501">Alice_西风的个人空间-Alice_西风个人主页-哔哩哔哩视频 (bilibili.com)</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h4><ul>
+<li>《手把手教你学51单片机》：适合新手的入门教材，除了单片机编程，还涉及数电、模电、C语言和算法逻辑，讲解深入浅出，非常推荐。</li>
+</ul>
+<h3 id="提升篇"><a href="#提升篇" class="headerlink" title="提升篇"></a>提升篇</h3><ul>
+<li><strong>视频</strong>：</li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/342764709">-机械狗-</a>（适合掌握基础模块后进一步提升，UP主也是开源协会的老学长）</li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hb4y1X7CN/?spm_id_from=333.999.0.0&vd_source=d07f9e255d8b920bb253675e7eabe191">【蓝桥杯单片机 第I季】1.2.3.一套”简单“的代码逻辑_哔哩哔哩_bilibili</a></li>
+</ul>
+<h3 id="其他资源"><a href="#其他资源" class="headerlink" title="其他资源"></a>其他资源</h3><ul>
+<li><strong>CSDN</strong>：中国软件开发者社区，适合编程新手，几乎所有与蓝桥杯相关的问题都能找到相关博客解答。</li>
+<li><strong>学长代码模板</strong>：参考优秀学长的代码，取其精华，化为己用。</li>
+<li><strong>官方</strong>：蓝桥杯官网也提供了大量的学习资料与课程，可以前去下载</li>
+</ul>
+<h2 id="学习建议"><a href="#学习建议" class="headerlink" title="学习建议"></a>学习建议</h2><p><em><strong><u>实践为主，理论结合。开始时可以模仿代码，不理解也没关系，后续通过查阅资料或者询问学长逐步理解。最终做到温故而知新，确保理论与实践并行，硬件开发中千万不能将代码与硬件分离。</u></strong></em></p>
+
+    <p><img src="https://pic.imgdb.cn/item/66dc7539d9c307b7e97d090d.jpg" loading="lazy"></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>Feng HanXiu<br>
+        <strong>Link：</strong><a href="http://example.com/2024/10/16/%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E8%B5%9B%E9%81%93%E5%85%A5%E9%97%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;10&#x2F;16&#x2F;%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E8%B5%9B%E9%81%93%E5%85%A5%E9%97%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;10&#x2F;16&#x2F;%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E8%B5%9B%E9%81%93%E5%85%A5%E9%97%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本博客采用由开源协会搭建
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1729087838152"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置 slotComment
+
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E8%B5%9B%E9%81%93%E5%85%A5%E9%97%A8%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94"><span class="toc-number">1.</span> <span class="toc-text">蓝桥杯单片机赛道入门问题解答</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%93%9D%E6%A1%A5%E6%9D%AF%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.</span> <span class="toc-text">1. 蓝桥杯是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E8%B5%9B%E9%81%93%E7%9A%84%E6%AF%94%E8%B5%9B%E5%BD%A2%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">2. 蓝桥杯单片机赛道的比赛形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%A6%82%E4%BD%95%E5%87%86%E5%A4%87"><span class="toc-number">1.3.</span> <span class="toc-text">3. 如何准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8D%95%E7%89%87%E6%9C%BA"><span class="toc-number">1.4.</span> <span class="toc-text">4. 什么是单片机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-15%E5%8D%95%E7%89%87%E6%9C%BA%E5%92%8C51%E5%8D%95%E7%89%87%E6%9C%BA%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.5.</span> <span class="toc-text">5. 15单片机和51单片机的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%93%9D%E6%A1%A5%E6%9D%AF%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%BB%E8%A7%82%E9%A2%98%E8%80%83%E5%AF%9F%E5%86%85%E5%AE%B9"><span class="toc-number">1.6.</span> <span class="toc-text">6. 蓝桥杯单片机主观题考察内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.6.1.</span> <span class="toc-text">学习路线建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90"><span class="toc-number">1.7.</span> <span class="toc-text">7. 学习资源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="toc-number">1.7.1.</span> <span class="toc-text">基础篇</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%86%E9%A2%91"><span class="toc-number">1.7.1.1.</span> <span class="toc-text">视频</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%A6%E7%B1%8D"><span class="toc-number">1.7.1.2.</span> <span class="toc-text">书籍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%8D%87%E7%AF%87"><span class="toc-number">1.7.2.</span> <span class="toc-text">提升篇</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%B5%84%E6%BA%90"><span class="toc-number">1.7.3.</span> <span class="toc-text">其他资源</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.8.</span> <span class="toc-text">学习建议</span></a></li></ol></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="Search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>
