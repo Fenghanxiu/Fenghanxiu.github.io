@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en"><head>
+<title>2024开源蓝桥系列（四）：独立按键，矩阵按键与按键消抖 - OSA</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<meta name="description" content="按键电路 矩阵按键将J5的KBD接在一起，使用矩阵按键。就是1.2接在一起。现在8个I&#x2F;O口控制16个按键。P34, P35, P42, P44控制四列，单片机通过这四个I&#x2F;O输出高低电平。P30, P31, P32, P33控制四行，单片机通过这四个I&#x2F;O接收高低电平。通过这种方式，单片机进行按键扫描。具体来说，就是先给P44一个低电平，P34, P35, P42一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024开源蓝桥系列（四）：独立按键，矩阵按键与按键消抖">
+<meta property="og:url" content="http://example.com/2024/11/21/2024%E5%BC%80%E6%BA%90%E8%93%9D%E6%A1%A5%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE%EF%BC%8C%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE%E4%B8%8E%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96/index.html">
+<meta property="og:site_name" content="OSA">
+<meta property="og:description" content="按键电路 矩阵按键将J5的KBD接在一起，使用矩阵按键。就是1.2接在一起。现在8个I&#x2F;O口控制16个按键。P34, P35, P42, P44控制四列，单片机通过这四个I&#x2F;O输出高低电平。P30, P31, P32, P33控制四行，单片机通过这四个I&#x2F;O接收高低电平。通过这种方式，单片机进行按键扫描。具体来说，就是先给P44一个低电平，P34, P35, P42一">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s21.ax1x.com/2024/11/18/pARTqtx.png">
+<meta property="og:image" content="https://s21.ax1x.com/2024/11/18/pAR7SnH.png">
+<meta property="og:image" content="https://s21.ax1x.com/2024/11/18/pAR7pBd.png">
+<meta property="og:image" content="https://s21.ax1x.com/2024/11/18/pAR7PAI.png">
+<meta property="article:published_time" content="2024-11-21T04:04:44.000Z">
+<meta property="article:modified_time" content="2024-11-26T04:08:08.509Z">
+<meta property="article:author" content="Feng HanXiu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s21.ax1x.com/2024/11/18/pARTqtx.png">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1732594134500">
+
+<link rel="stylesheet" href="/css/style.css?v=1732594134500">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1732594134500">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1732594134501"></script>
+
+ 
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4D4ZJ9G024"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+
+  gtag("config", "G-4D4ZJ9G024");
+</script>
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(https://pic.imgdb.cn/item/66dc805ad9c307b7e993fd82.png)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="Feng HanXiu"><img src="https://pic.imgdb.cn/item/66dc7539d9c307b7e97d090d.jpg" alt="Feng HanXiu"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Feng HanXiu">
+            <img src="https://pic.imgdb.cn/item/66dc7539d9c307b7e97d090d.jpg" alt="Feng HanXiu" alt="Feng HanXiu">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>9</div>
+        <div><span>Tags</span>0</div>
+        <div><span>Categories</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="https://nexmoe.com/donate.html" title="给我赞助">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                给我赞助
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" target="_blank" rel="noopener" href="http://wpa.qq.com/msgrd?v=3&uin=1719210758&site=qq&menu=yes" title="关于博主">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博主
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+            </form>
+         
+    </div>
+</div>
+
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="https://jq.qq.com/?_wv=1027&k=5CfKHun"
+			target="_blank"
+			mdui-tooltip="{content: 'QQ群'}"
+			style="
+				color: rgb(249, 174, 8);
+				background-color: rgba(249, 174, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-QQ"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://space.bilibili.com/20238211"
+			target="_blank"
+			mdui-tooltip="{content: '哔哩哔哩'}"
+			style="
+				color: rgb(231, 106, 141);
+				background-color: rgba(231, 106, 141, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-bilibili"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/nexmoe/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://www.zhihu.com/people/nexmoe"
+			target="_blank"
+			mdui-tooltip="{content: '知乎'}"
+			style="
+				color: rgb(30, 136, 229);
+				background-color: rgba(30, 136, 229, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-zhihu"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://twitter.com/nexmoe"
+			target="_blank"
+			mdui-tooltip="{content: 'Twitter'}"
+			style="
+				color: rgb(59, 151, 239);
+				background-color: rgba(59, 151, 239, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-twitter"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://nexmoe.com/atom.xml"
+			target="_blank"
+			mdui-tooltip="{content: 'RSS'}"
+			style="
+				color: rgb(247, 132, 34);
+				background-color: rgba(247, 132, 34, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-rss"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+
+    
+        
+        
+    
+        
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Recent Posts</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/11/26/2024%E5%BC%80%E6%BA%90%E8%93%9D%E6%A1%A5%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%94%EF%BC%89%EF%BC%9A%E5%AE%9A%E6%97%B6%E5%99%A8%E4%B8%8E%E4%B8%AD%E6%96%AD%E6%A6%82%E5%BF%B5/">2024开源蓝桥系列（五）：定时器与中断概念</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/21/2024%E5%BC%80%E6%BA%90%E8%93%9D%E6%A1%A5%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE%EF%BC%8C%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE%E4%B8%8E%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96/">2024开源蓝桥系列（四）：独立按键，矩阵按键与按键消抖</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/13/2024%E5%BC%80%E6%BA%90%E8%93%9D%E6%A1%A5%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9A%E6%95%B0%E7%A0%81%E7%AE%A1%E7%9A%84%E9%9D%99%E6%80%81%EF%BC%8C%E5%8A%A8%E6%80%81%E6%98%BE%E7%A4%BA%E4%BB%A5%E5%8F%8A%E6%B6%88%E5%BD%B1%E5%8E%9F%E7%90%86/">2024开源蓝桥系列（三）：数码管的静态，动态显示以及消影原理</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/05/2024%E5%BC%80%E6%BA%90%E8%93%9D%E6%A1%A5%E7%B3%BB%E5%88%97%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%9F%BA%E7%A1%80%E5%A4%96%E8%AE%BE%EF%BC%88LED%EF%BC%8C%E8%9C%82%E9%B8%A3%E5%99%A8%EF%BC%8C%E7%BB%A7%E7%94%B5%E5%99%A8%EF%BC%89%E5%AD%A6%E4%B9%A0/">2024开源蓝桥系列（二）：基础外设（LED，蜂鸣器，继电器）学习</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/31/2024%E5%BC%80%E6%BA%90%E8%93%9D%E6%A1%A5%E7%B3%BB%E5%88%97%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%8D%95%E7%89%87%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%EF%BC%8C%E5%B8%B8%E7%94%A8%E7%94%B5%E8%84%91%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%94%B5%E5%AD%90%E7%B1%BB%E6%AF%94%E8%B5%9B%E4%BB%8B%E7%BB%8D/">2024开源蓝桥系列（一）：单片机基础知识，常用电脑操作，电子类比赛介绍</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-link">
+		<ul>
+        
+            <li>
+                <a href="https://nexmoe.com/" target="_blank" >
+                    <img src="https://pic.imgdb.cn/item/66dc81fcd9c307b7e996366f.jpg" alt="封寒修"></img>
+                    <p>封寒修</p>
+                </a>
+            </li>
+        
+		</ul>
+    </div>
+</div>
+<style>
+.nexmoe-widget-wrap .nexmoe-link ul li a {
+    text-align : center;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a img {
+    max-width : 100%;
+}
+.nexmoe-widget-wrap .nexmoe-link ul li a p {
+    margin: 10px 0;
+}
+</style>
+
+    
+   
+    <div class="nexmoe-copyright">
+        &copy; 2024 Feng HanXiu
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://beian.miit.gov.cn/">鄂ICP备2020018486号</a>
+<br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral">
+<img src="https://pic.imgdb.cn/item/66de4c62d9c307b7e939a02c.png" width="150px"></a>
+
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover"> 
+            <img src="https://pic.imgdb.cn/item/66dc805ad9c307b7e993fd82.png" alt="2024开源蓝桥系列（四）：独立按键，矩阵按键与按键消抖" loading="lazy">
+            <h1>2024开源蓝桥系列（四）：独立按键，矩阵按键与按键消抖</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2024年11月21日</a>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <h1 id="按键电路"><a href="#按键电路" class="headerlink" title="按键电路"></a>按键电路</h1><p><a target="_blank" rel="noopener" href="https://imgse.com/i/pARTqtx"><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s21.ax1x.com/2024/11/18/pARTqtx.png" alt="pARTqtx.png" data-caption="pARTqtx.png" loading="lazy"></a><br><a target="_blank" rel="noopener" href="https://imgse.com/i/pAR7SnH"><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s21.ax1x.com/2024/11/18/pAR7SnH.png" alt="pAR7SnH.png" data-caption="pAR7SnH.png" loading="lazy"></a></p>
+<h2 id="矩阵按键"><a href="#矩阵按键" class="headerlink" title="矩阵按键"></a>矩阵按键</h2><p>将J5的KBD接在一起，使用矩阵按键。就是1.2接在一起。<br>现在8个I&#x2F;O口控制16个按键。P34, P35, P42, P44控制四列，单片机通过这四个I&#x2F;O输出高低电平。P30, P31, P32, P33控制四行，单片机通过这四个I&#x2F;O接收高低电平。通过这种方式，单片机进行按键扫描。<br>具体来说，就是先给P44一个低电平，P34, P35, P42一个高电平，这个时候看P30, P31, P32, P33，如果P30给单片机一个低电平，那么表示S7按下，以此类推。<br>总结来说，按键扫描就是给a列低电平，其实三列高电平，如果b行是低电平，就是a列b行的按键被按下。</p>
+<h2 id="独立按键"><a href="#独立按键" class="headerlink" title="独立按键"></a>独立按键</h2><p>将J5的BTN接在一起，使用独立按键，就是2.3接在一起。<br>独立按键由四个一列的按键组成。<br>独立按键由于2.3接在一起，默认这列是低电平，然后看那行低电平，就是对应的按键。<br>总结来说，独立按键扫描就是那行低电平，就是那行对应的按键被按下。</p>
+<h1 id="按键模块化编程"><a href="#按键模块化编程" class="headerlink" title="按键模块化编程"></a>按键模块化编程</h1><h2 id="按键模块化编程原理"><a href="#按键模块化编程原理" class="headerlink" title="按键模块化编程原理"></a>按键模块化编程原理</h2><p>由于矩阵按键和独立按键扫描原理差不多，就不分开编程了。<br>在蓝桥杯单片机开发板中，按键是一个特殊的外设，一般通过它将其他的外设连接起来。例如：按下S7，LED全亮。<br>所以说，在按键编程时，不仅要编写按键的模块化代码，还要有一个模板来方便各种外设调用。</p>
+<h2 id="按键模块化编程代码"><a href="#按键模块化编程代码" class="headerlink" title="按键模块化编程代码"></a>按键模块化编程代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">（<span class="number">1</span>）按键扫描部分</span><br><span class="line"><span class="comment">// key.c头文件代码部分</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;key.h&quot;</span></span></span><br><span class="line"><span class="comment">// 根据考题决定是编写独立按键还是矩阵键盘</span></span><br><span class="line"><span class="comment">// --独立按键</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> <span class="title function_">Key_Read_BTN</span><span class="params">(<span class="type">void</span>)</span> <span class="comment">// 这个独立按键结构简单，代码方便。</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> Key_Value;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (P30 == <span class="number">0</span>) Key_Value = <span class="number">7</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (P31 == <span class="number">0</span>) Key_Value = <span class="number">6</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (P32 == <span class="number">0</span>) Key_Value = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (P33 == <span class="number">0</span>) Key_Value = <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">else</span> Key_Value = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> Key_Value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// --矩阵键盘</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> <span class="title function_">Key_Read</span><span class="params">(<span class="type">void</span>)</span> <span class="comment">/* 这个思路是先扫描一列，然后接收P3的低四位，</span></span><br><span class="line"><span class="comment">P3 &amp; 0X0F就是将P3的高四位清空，低四位保持不变。然后让这个低四位左移，而低四位可以代表那一行的按键按下。在keil中，unsigned int是16位变量，通过不断的左移，这个变量前四位是扫描第1列时P3的后四位，以此类推。这个变量就储存着按下的按键位置。 */</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> Key_New;</span><br><span class="line">    <span class="type">unsigned</span> <span class="type">char</span> Key_Value;</span><br><span class="line"></span><br><span class="line">    P44 = <span class="number">0</span>; P42 = <span class="number">1</span>; P35 = <span class="number">1</span>; P34 = <span class="number">1</span>;</span><br><span class="line">    Key_New = P3 &amp; <span class="number">0X0F</span>;</span><br><span class="line"></span><br><span class="line">    P44 = <span class="number">1</span>; P42 = <span class="number">0</span>; P35 = <span class="number">1</span>; P34 = <span class="number">1</span>;</span><br><span class="line">    Key_New = (Key_New &lt;&lt; <span class="number">4</span>) | (P3 &amp; <span class="number">0X0F</span>);</span><br><span class="line"></span><br><span class="line">    P44 = <span class="number">1</span>; P42 = <span class="number">1</span>; P35 = <span class="number">0</span>; P34 = <span class="number">1</span>;</span><br><span class="line">    Key_New = (Key_New &lt;&lt; <span class="number">4</span>) | (P3 &amp; <span class="number">0X0F</span>);</span><br><span class="line"></span><br><span class="line">    P44 = <span class="number">1</span>; P42 = <span class="number">1</span>; P35 = <span class="number">1</span>; P34 = <span class="number">0</span>;</span><br><span class="line">    Key_New = (Key_New &lt;&lt; <span class="number">4</span>) | (P3 &amp; <span class="number">0X0F</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (~Key_New)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x8000</span>: Key_Value = <span class="number">4</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x4000</span>: Key_Value = <span class="number">5</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x2000</span>: Key_Value = <span class="number">6</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x1000</span>: Key_Value = <span class="number">7</span>; <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x0800</span>: Key_Value = <span class="number">8</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x0400</span>: Key_Value = <span class="number">9</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x0200</span>: Key_Value = <span class="number">10</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x0100</span>: Key_Value = <span class="number">11</span>; <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x0080</span>: Key_Value = <span class="number">12</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x0040</span>: Key_Value = <span class="number">13</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x0020</span>: Key_Value = <span class="number">14</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x0010</span>: Key_Value = <span class="number">15</span>; <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x0008</span>: Key_Value = <span class="number">16</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x0004</span>: Key_Value = <span class="number">17</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x0002</span>: Key_Value = <span class="number">18</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">0x0001</span>: Key_Value = <span class="number">19</span>; <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>: Key_Value = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Key_Value;</span><br><span class="line">&#125; <span class="comment">// key.h头文件代码部分</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;STC15F2K60S2.H&quot;</span></span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> <span class="title function_">Key_Read_BTN</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// 独立按键</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> <span class="title function_">Key_Read</span><span class="params">(<span class="type">void</span>)</span>; <span class="comment">// 矩阵键盘</span></span><br></pre></td></tr></table></figure>
+<h1 id="按键消抖"><a href="#按键消抖" class="headerlink" title="按键消抖"></a>按键消抖</h1><p>通常按键所用的开关都是机械弹性开关，当机械触点断开、闭合时，由于机械触点的弹性作用，一个开关在闭合时不会马上就稳定接通，在断开时也不会一下子彻底断开，而且在闭合和断开的瞬间伴随一连串的抖动。如图所示。<br><a target="_blank" rel="noopener" href="https://imgse.com/i/pAR7pBd"><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s21.ax1x.com/2024/11/18/pAR7pBd.png" alt="pAR7pBd.png" data-caption="pAR7pBd.png" loading="lazy"></a><br><a target="_blank" rel="noopener" href="https://imgse.com/i/pAR7PAI"><img onerror="imgOnError(this);" data-fancybox="gallery" src="https://s21.ax1x.com/2024/11/18/pAR7PAI.png" alt="pAR7PAI.png" data-caption="pAR7PAI.png" loading="lazy"></a><br>按键稳定闭合时间长短由操作人员决定，通常都会在100ms以上，刻意快速按的话能达到40-50ms，很难再低了。抖动时间是由按键的机械特性决定的，一般都会在10ms以内。为了确保程序对按键的一次闭合或者一次断开只响应一次，必须进行按键的消抖处理。当检测到按键状态变化时，不是去响应动作，而是先等待闭合或者断开稳定后再进行处理。</p>
+<p>按键消抖可以分为硬件消抖和软件消抖。硬件消抖是在按键上并联一个电容，利用电容的充放电特性来对抖动中产生的电压毛刺进行平滑处理。但在实际应用中，这种方式的效果往往不是很好，还增加了成本，因此实际中使用的并不多。绝大多数是用软件即程序来消抖。最简单的消抖原理，就是当检测到按键状态变化后，先等待一个10ms左右的延时时间，让抖动消失后再进行一次按键状态检测，如果与刚才检测到的状态相同，就可以确定按键已经稳定动作了。</p>
+<pre><code class="c">
+Main()
+&#123;
+    unsigned char past = 0; //实时态的前一稳态
+    unsigned char now = 0; // 按键开关实时状态
+    while(1)
+    &#123;
+        now = key_read(); //把按键开关的状态赋值给now
+        if (past != now) //确认前一个稳态和现在这个实时态不同进入程序，说明状态变化
+        &#123;
+            delay(); //延时10ms,消抖
+            now = key_read();
+            if (past != now) //延时后说明按键开关进入新稳态
+            &#123;
+                if (now != 0) //开关的实时态处于按住状态
+                &#123;
+                    //
+                &#125;
+                past = now; //把这个实时态也是新稳态赋值给past
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+
+    <p><img src="https://pic.imgdb.cn/item/66dc7539d9c307b7e97d090d.jpg" loading="lazy"></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>Author：</strong>Feng HanXiu<br>
+        <strong>Link：</strong><a href="http://example.com/2024/11/21/2024%E5%BC%80%E6%BA%90%E8%93%9D%E6%A1%A5%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE%EF%BC%8C%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE%E4%B8%8E%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96/" title="http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;11&#x2F;21&#x2F;2024%E5%BC%80%E6%BA%90%E8%93%9D%E6%A1%A5%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE%EF%BC%8C%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE%E4%B8%8E%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;example.com&#x2F;2024&#x2F;11&#x2F;21&#x2F;2024%E5%BC%80%E6%BA%90%E8%93%9D%E6%A1%A5%E7%B3%BB%E5%88%97%EF%BC%88%E5%9B%9B%EF%BC%89%EF%BC%9A%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE%EF%BC%8C%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE%E4%B8%8E%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本博客采用由开源协会搭建
+
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1732594134460"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          请在你的配置文件中设置 slotComment
+
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%89%E9%94%AE%E7%94%B5%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">按键电路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE"><span class="toc-number">1.1.</span> <span class="toc-text">矩阵按键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE"><span class="toc-number">1.2.</span> <span class="toc-text">独立按键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">按键模块化编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">按键模块化编程原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%89%E9%94%AE%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">2.2.</span> <span class="toc-text">按键模块化编程代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%89%E9%94%AE%E6%B6%88%E6%8A%96"><span class="toc-number">3.</span> <span class="toc-text">按键消抖</span></a></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="Search" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2058306854838448" crossorigin="anonymous"></script>
+</div></body></html>
